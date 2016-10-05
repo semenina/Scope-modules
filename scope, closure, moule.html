@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+//    //    1. Что выведет следующий код? =)
+//
+//     getBigName(userName);
+//
+//    function getBigName(userName) {
+//        name = name + "";
+//        return name.toUpperCase();
+//    }
+//    var userName = "Ivan";
+//
+//    // ничего не выведет, так как мы ничего не передеем в name и возвращаем пустую строку.
+//
+//
+//    //    2. Какое значение вернет функция test?
+//
+//    function test() {
+//        var name = "Vasiliy";
+//        return getBigName(userName);
+//    }
+//
+//    function getBigName(userName) {
+//        name = name + "";
+//        return name.toUpperCase();
+//    }
+//    var userName = "Ivan";
+//    console.log(test());
+//
+//    // ничего не выведет, так как мы ничего не передеем в getBigName передали то аргумент, но его не возвращаем в результате отработанной функции.
+//
+//    // 3. Что выведет функция?
+//
+//    var food = "cucumber";
+//    (function(){
+//        var food = "bread";
+//        getFood();
+//    })();
+//
+//    function getFood() {
+//        console.log(food);
+//    }
+//
+//    //    getFood выведет cucumber потому, что в самой глобальная переменная food была передана в самой функции, а при ее вызове не было передано никаких параметров в нее. Поэтому она вывела глобальную переменную.
+//
+//    //   Замыкание.
+//    //  1. Какое значение выведет функция getDollar
+//
+//    var dollar, getDollar;
+//
+//    (function () {
+//        var dollar = 0;
+//        getDollar = function () {
+//            return dollar;
+//        }
+//
+//    }());
+//    dollar = 30;
+//    console.log(getDollar(dollar));
+//
+//    // Вернет 0. На сколько  я понимаю, потому что у нас самовызывающаяся функция, в которой находится лок.функция, которая имеет доступ к переменной dollar = 0 и тут замыкание.
+//
+//
+//    // 2. Что будет выведено? =)
+//
+//    var greet = "Hello";
+//    (function () {
+//        var text = "World";
+//        console.log(greet + text);
+//    }());
+////    console.log(greet + text);
+//
+//    //   console.log(greet + text) в строчке сработает, потому что функции доступна глоб.переменная greet и лок.переменная text.
+//    // Второй console.log(greet + text) в строчке не сработает корректно, так как text - лок.переменная функции.
+//
+//    // 3. Создать функция, которая умела делать: minus(10)(6); minus(5)(6); minus(10)(); minus()(6); minus()(); =))
+//
+//
+//    var minus = function(a) {
+//        var a = a || 0;
+//        return function (b){
+//            var b = b || 0;
+//            return   a - b;
+//        }
+//    };
+//
+//    console.log(minus(10)(6));
+//    console.log(minus(5)(6));
+//    console.log(minus(10)());
+//    console.log(minus()(6));
+//    console.log(minus()());
+//
+//    //    4. Реализовать функцию MultiplyMaker
+//
+//    function MultiplyMaker(mul) {
+//        var num = mul;
+//        return function (num2) {
+//            return num *= num2;
+//        }
+//    };
+//    const multiply = MultiplyMaker(2);
+//
+//    console.log(multiply(2));
+//    console.log(multiply(1));
+//    console.log(multiply(3));
+//    console.log(multiply(10));
+//
+//    // 5. Реализовать модуль, который работает со строкой и имеет методы
+//
+//     var workWithString = function() {
+//        var str;
+//         function setStr (val){
+//            if(val == undefined){
+//                str = "";
+//            }if(isNaN(+val)){
+//                 str = val;
+//             }
+//        }
+//
+//        function getStr (){
+//            return str;
+//        }
+//         function countLength() {
+//            return str.length;
+//        }
+//         function reverse() {
+//            return str.split("").reverse().join("");
+//        }
+//        return {
+//            getStr: getStr,
+//            setStr: setStr,
+//            countLength: countLength,
+//            reverse: reverse
+//            }
+//        };
+//
+//    var workStr = workWithString();
+//
+//    workStr.setStr("abcde");
+//    console.log(workStr.getStr());
+//    console.log(workStr.reverse());
+//    console.log(workStr.countLength());
+//
+//    // Создать модуль калькулятор, который умеет складывать, умножать, вычитать, делить и возводить в степень. Реализовать цепочку
+//
+//    var calculator = function () {
+//        var res;
+//
+//        function setVal(val) {
+//            res = val;
+//            return this;
+//        }
+//
+//        function adding(val) {
+//            res += val;
+//            return this;
+//        }
+//
+//        function multiply(val) {
+//            res *= val;
+//            return this;
+//        }
+//
+//        function declare(val) {
+//            res -= val;
+//            return this;
+//        }
+//
+//        function deviding(val) {
+//            res /= val;
+//            return this;
+//        }
+//
+//        function powVal(n) {
+//            res = Math.pow(res, n);
+//            return this;
+//        }
+//
+//        function getVal() {
+//            return res = res.toFixed(2);
+//        }
+//
+//        return {
+//            setVal: setVal,
+//            adding: adding,
+//            multiply: multiply,
+//            declare: declare,
+//            deviding: deviding,
+//            powVal: powVal,
+//            getVal: getVal
+//        }
+//    }
+//    var calc = calculator();
+//
+//    calc.setVal(10);
+//    calc.adding(5);
+//    calc.multiply(2);
+//    console.log(calc.getVal());
+//    console.log(calc.setVal(10).powVal(2).getVal());
+
+</script>
+</body>
+</html>
+
+
+
+
+
